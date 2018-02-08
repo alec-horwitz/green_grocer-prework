@@ -2,11 +2,10 @@ def consolidate_cart(cart)
   consolidatedCart = {}
   cart.each {|inventory|
     inventory.each {|item, values|
-
       consolidatedCart[item][:count] += 1 if consolidatedCart[item]
       if !consolidatedCart[item]
         consolidatedCart[item] = values
-        consolidatedCart[item][:count] = 1
+        (consolidatedCart[item] = values)[item][:count] = 1
       end
     }
   }
