@@ -1,4 +1,3 @@
-require "pry"
 def consolidate_cart(cart)
   consolidatedCart = {}
   cart.each {|inventory|
@@ -31,7 +30,6 @@ end
 def apply_clearance(cart)
   cart.each { |item, value|
     if value[:clearance]
-      # binding.pry
       value[:price] = (value[:price] * 0.80).round(2)
     end
   }
@@ -40,9 +38,7 @@ end
 
 def checkout(cart, coupons)
   cart = consolidate_cart(cart)
-  # binding.pry
   cart = apply_coupons(cart, coupons)
-  # binding.pry
   cart = apply_clearance(cart)
   total = 0.00
   cart.each {|item, value|
