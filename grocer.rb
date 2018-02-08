@@ -31,7 +31,6 @@ def apply_coupons(cart, coupons)
         end
       end
     }
-    binding.pry
     if newItemCount
       if newCount
         appliedCart[item] = {:price => item[:price], :clearance => item[:clearance], :count => newCount}
@@ -40,6 +39,7 @@ def apply_coupons(cart, coupons)
     else
       appliedCart[item] = values
     end
+    binding.pry
   }
   appliedCart
   # code here
