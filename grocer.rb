@@ -1,4 +1,4 @@
-require "pry"
+# require "pry"
 def consolidate_cart(cart)
   consolidatedCart = {}
   cart.each {|inventory|
