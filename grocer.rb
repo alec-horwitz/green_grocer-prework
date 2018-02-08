@@ -36,10 +36,11 @@ def apply_coupons(cart, coupons)
         appliedCart[item] = {:price => item[:price], :clearance => item[:clearance], :count => newCount}
       end
       appliedCart[item + "W/COUPON"] = {:price => newItemCost, :clearance => item[:clearance], :count => newItemCount}
+      binding.pry
     else
       appliedCart[item] = values
+      binding.pry
     end
-    binding.pry
   }
   appliedCart
   # code here
