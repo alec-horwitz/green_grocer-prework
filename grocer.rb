@@ -17,8 +17,8 @@ end
 def apply_coupons(cart, coupons)
   cart.map {|item, values|
     coupons.each {|coupon|
-      if coupon[:item] == item
-        if coupon[:num] <= item[:count]
+      if coupon[:item].to_s == item.to_s
+        if coupon[:num].to_i <= item[:count].to_i
           cart[item][:count] = item[:count] % coupon[:num]
           cart[(item + " W/COUPON")] = {:price => coupon[:cost], :clearance => item[:clearance], :count => (item[:count] / coupon[:num])}
           # cart[(item + " W/COUPON")][:price] = coupon[:cost]
