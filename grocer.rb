@@ -28,7 +28,6 @@ def apply_coupons(cart, coupons)
       end
     }
   }
-  cart
 end
 
 def apply_clearance(cart)
