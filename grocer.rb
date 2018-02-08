@@ -15,8 +15,7 @@ def consolidate_cart(cart)
 end
 
 def apply_coupons(cart, coupons)
-  appliedCart = {}
-  cart.each {|item, values|
+  cart.map {|item, values|
     newCount = 0
     newItemCount = 0
     newItemCost = 0.00
@@ -30,13 +29,10 @@ def apply_coupons(cart, coupons)
       end
     }
     if newItemCount
-      appliedCart[item] = {:price => item[:price], :clearance => item[:clearance], :count => newCount}
-      appliedCart[(item + " W/COUPON")] = {:price => newItemCost, :clearance => item[:clearance], :count => newItemCount}
-    else
-      appliedCart[item] = values
+      cart[item] = {:price => item[:price], :clearance => item[:clearance], :count => newCount}
+      cart[(item + " W/COUPON")] = {:price => newItemCost, :clearance => item[:clearance], :count => newItemCount}
     end
   }
-  appliedCart
 end
 
 def apply_clearance(cart)
