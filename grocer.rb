@@ -19,7 +19,7 @@ def apply_coupons(cart, coupons)
   cart.each {|item, values|
     newCount = 0
     newItemCount = 0
-    newItemCost = 0
+    newItemCost = 0.00
     newItemName = ""
     coupons.each {|coupon|
       if coupon[:item] == item
@@ -45,6 +45,11 @@ def apply_coupons(cart, coupons)
 end
 
 def apply_clearance(cart)
+  cart.map { |item|  
+    if item[:clearance]
+      item[:price] = item[:price] * 0.80
+    end
+  }
   # code here
 end
 
