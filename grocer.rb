@@ -22,16 +22,14 @@ def apply_coupons(cart, coupons)
     coupons.each {|coupon|
       if coupon[:item] == item
         if coupon[:num] <= item[:count]
-          newCount = item[:count] % coupon[:num]
-          newItemCount = item[:count] / coupon[:num]
-          newItemCost = coupon[:cost]
+          cart[item][:count] = item[:count] % coupon[:num]
+          cart[(item + " W/COUPON")] = {}
+          cart[(item + " W/COUPON")][:price] = coupon[:cost] 
+          cart[(item + " W/COUPON")][:clearance] = item[:clearance] 
+          cart[(item + " W/COUPON")][:count] = item[:count] / coupon[:num]
         end
       end
     }
-    if newItemCount
-      cart[item][:count] = newCount
-      cart[(item + " W/COUPON")] = {:price => newItemCost, :clearance => item[:clearance], :count => newItemCount}
-    end
   }
 end
 
