@@ -17,10 +17,10 @@ end
 def apply_coupons(cart, coupons)
   coupons.each {|coupon|
     if cart.include?(coupon[:item])
-      # binding.pry
       cartitem = coupon[:item]
       cartitemValue = cart[cartitem]
       if coupon[:num] <= cartitemValue[:count]
+        binding.pry
         cart[cartitem][:count] = cartitemValue[:count] % coupon[:num]
         cart[(cartitem + " W/COUPON")] = {:price => coupon[:cost], :clearance => cartitemValue[:clearance], :count => (cartitemValue[:count] / coupon[:num])}
         # cart[(item + " W/COUPON")][:price] = coupon[:cost]
