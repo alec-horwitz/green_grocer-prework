@@ -15,6 +15,7 @@ def consolidate_cart(cart)
 end
 
 def apply_coupons(cart, coupons)
+  binding.pry
   cart.map {|item, values|
     coupons.each {|coupon|
       if coupon[:item] == item
