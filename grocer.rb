@@ -1,3 +1,4 @@
+require "pry"
 def consolidate_cart(cart)
   consolidatedCart = {}
   cart.each {|inventory|
@@ -30,6 +31,7 @@ def apply_coupons(cart, coupons)
         end
       end
     }
+    binding.pry
     if newItemCount
       if newCount
         appliedCart[item] = {:price => item[:price], :clearance => item[:clearance], :count => newCount}
