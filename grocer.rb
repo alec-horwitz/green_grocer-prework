@@ -22,6 +22,7 @@ def apply_coupons(cart, coupons)
         if coupon[:num] <= item[:count]
           cart[item][:count] = item[:count] % coupon[:num]
           cart[(item + " W/COUPON")] = {:price => coupon[:cost], :clearance => item[:clearance], :count => (item[:count] / coupon[:num])}
+          binding.pry
           # cart[(item + " W/COUPON")][:price] = coupon[:cost]
           # cart[(item + " W/COUPON")][:clearance] = item[:clearance]
           # cart[(item + " W/COUPON")][:count] = item[:count] / coupon[:num]
@@ -29,7 +30,6 @@ def apply_coupons(cart, coupons)
       end
     }
   }
-  binding.pry
   cart
 end
 
