@@ -43,6 +43,7 @@ def checkout(cart, coupons)
   cart = consolidate_cart(cart)
   binding.pry
   cart = apply_coupons(cart, coupons)
+  binding.pry
   cart = apply_clearance(cart)
   total = 0.00
   cart.each {|item|
