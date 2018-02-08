@@ -16,7 +16,7 @@ end
 def apply_coupons(cart, coupons)
   appliedCart = {}
   cart.each {|item, values|
-    newCount = =
+    newCount = 0
     newItemCount = 0
     newItemCost = 0
     newItemName = ""
