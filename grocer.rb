@@ -41,7 +41,6 @@ def apply_coupons(cart, coupons)
     end
   }
   appliedCart
-  # code here
 end
 
 def apply_clearance(cart)
@@ -50,7 +49,6 @@ def apply_clearance(cart)
       item[:price] = item[:price] * 0.80
     end
   }
-  # code here
 end
 
 def checkout(cart, coupons)
