@@ -45,8 +45,8 @@ def checkout(cart, coupons)
   # binding.pry
   cart = apply_clearance(cart)
   total = 0.00
-  cart.each {|item|
-    total += item[:price] * item[:count]
+  cart.each {|item, value|
+    total += value[:price] * value[:count]
   }
   if total > 100.00
     total = total * 0.90
