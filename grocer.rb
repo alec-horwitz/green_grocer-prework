@@ -15,19 +15,17 @@ def consolidate_cart(cart)
 end
 
 def apply_coupons(cart, coupons)
-  cart.each {|item, values|
-    coupons.each {|coupon|
-      if coupon[:item].to_s == item.to_s
-        binding.pry
-        if coupon[:num].to_i <= values[:count].to_i
-          cart[item][:count] = values[:count] % coupon[:num]
-          cart[(item + " W/COUPON")] = {:price => coupon[:cost], :clearance => values[:clearance], :count => (values[:count] / coupon[:num])}
-          # cart[(item + " W/COUPON")][:price] = coupon[:cost]
-          # cart[(item + " W/COUPON")][:clearance] = item[:clearance]
-          # cart[(item + " W/COUPON")][:count] = item[:count] / coupon[:num]
-        end
+  coupons.each {|coupon|
+    if cart.include?(coupon[:item])
+      binding.pry
+      if coupon[:num] <= values[:count]
+        cart[coupon[:item]][:count] = values[:count] % coupon[:num]
+        cart[(coupon[:item] + " W/COUPON")] = {:price => coupon[:cost], :clearance => values[:clearance], :count => (values[:count] / coupon[:num])}
+        # cart[(item + " W/COUPON")][:price] = coupon[:cost]
+        # cart[(item + " W/COUPON")][:clearance] = item[:clearance]
+        # cart[(item + " W/COUPON")][:count] = item[:count] / coupon[:num]
       end
-    }
+    end
   }
   cart
 end
